@@ -53,7 +53,7 @@ export default function HomePage() {
                   SPECIAL OFFER!
                 </h2>
                 <p className="text-xl text-white mb-6 font-semibold drop-shadow">
-                  You've been selected for an exclusive deal!
+                  You&apos;ve been selected for an exclusive deal!
                 </p>
                 <div className="bg-black bg-opacity-20 backdrop-blur-sm rounded-lg p-4 mb-6">
                   <p className="text-white text-lg font-bold">
