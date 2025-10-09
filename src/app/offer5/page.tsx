@@ -14,30 +14,10 @@ function Offer5Content() {
             params[key] = value;
         });
         setQueryParams(params);
+
+        // Track that this offer was viewed
+        console.log('Offer 5 viewed - Current rotation index:', localStorage.getItem('redirector_rotation_index'));
     }, [searchParams]);
-
-    useEffect(() => {
-        const handleBackButtonSetup = () => {
-            // Add an entry to browser history so back button returns to redirect page
-            window.history.pushState(null, '', window.location.href);
-
-            const handlePopState = () => {
-                // When back button is pressed, go to redirect page
-                const queryString = new URLSearchParams(queryParams).toString();
-                const redirectUrl = queryString ? `/redirect?${queryString}` : '/redirect';
-                window.location.href = redirectUrl;
-            };
-
-            window.addEventListener('popstate', handlePopState);
-
-            return () => {
-                window.removeEventListener('popstate', handlePopState);
-            };
-        };
-
-        const cleanup = handleBackButtonSetup();
-        return cleanup;
-    }, [queryParams]);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-700 flex items-center justify-center p-4">
@@ -73,7 +53,7 @@ function Offer5Content() {
                 )}
                 
                 <p className="text-sm text-gray-500 mt-6">
-                    Press the back button to complete the cycle (redirects to external site)
+                    Close this tab and return to the home page to complete the cycle
                 </p>
             </div>
         </div>
